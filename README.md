@@ -162,16 +162,16 @@ This repository contains all the information studied and created during the Adva
    
 # Day 2 - Good floorplan vs bad floorplan and introduction to library cells
  ## Chip Floorplanning
-   Chip Floorplanning is the arrangement of logical block, library cells, pins on silicon chip. It makes sure that every module has been assigned an appropriate area and aspect ratio, every pin of the module has connection with other modules or periphery of the chip and modules are arranged in a way such that it consumes lesser area on a chip.
+   The arrangement of logical blocks, library cells, and pins on a silicon chip is known as chip floorplanning. It ensures that each module has an appropriate area and aspect ratio, that every pin of the module is connected to other modules or the chip's periphery, and that modules are arranged in such a way that they consume less area on a chip.
    
  ### Utilization Factor and Aspect Ratio
-   Utilization Factor is ratio of the area of core used by standard cells to the total core area. The utilization factor is generally kept in the range of 0.5-0.7 i.e. 50% - 60%. Maintaining a proper utilization factor facilitates placement and routing optimization.
+   The Utilization Factor is the ratio of standard cell core area to total core area. The utilisation factor is typically kept between 0.5 and 0.7, or 50% and 60%. Keeping a proper utilisation factor allows for better placement and routing optimization.
    
  ### Power Planning
-   Power planning is a step in which power grid network is created to distribute power to each part of the design equally. This step deals with the unwanted voltage drop and ground bounce. Steady state IR Drop is caused by the resistance of the metal wires comprising the power distribution network. By reducing the voltage difference between local power and ground, steady-state IR Drop reduces both the speed and noise immunity of the local cells and macros.
+   Power planning is the process of creating a power grid network to distribute power evenly to each component of the design. This step addresses the unwelcome voltage drop and ground bounce. The resistance of the metal wires that comprise the power distribution network causes steady-state IR Drop. Stable-state IR Drop reduces both the speed and noise immunity of local cells and macros by decreasing the voltage difference between local power and ground.
    
  ### Pin Placement
-   Pin placement is a important part of floorplanning as the timing delays and number of buffers required is dependent on the position of the pin. There are multiple pin placement option available such as equidistant placement, high-density placement.
+   The position of the pin determines the timing delays and the number of buffers required, so pin placement is critical in floorplanning. There are several pin placement options available, including equidistant and high-density placement.
  
  ### Floorplan using OpenLANE
    Floorplanning in OpenLANE is done using the following command. 
@@ -183,10 +183,10 @@ This repository contains all the information studied and created during the Adva
    <img src="images/d2_floorplan_def.JPG">
  
  ### Review Floorplan Layout in Magic
-   Magic Layout Tool is used for visualizing the layout after floorplan. In order to view floorplan in Magic, following three files are required:
-    1. Technology File (`sky130A.tech`)
-    2. Merged LEF file (`merged.lef`)
-    3. DEF File
+   The Magic Layout Tool is used to visualise the layout after the floorplan has been created. The following three files are required to view a floorplan in Magic:
+1. Sky130A.tech Technology File
+2. LEF file that has been merged ('merged.lef')
+3. DEF Document
     
    <img src="images/d2_floorplan_invoke_magic_cmd.JPG">
    <img src="images/d2_floorplan_magic.JPG">
@@ -194,12 +194,16 @@ This repository contains all the information studied and created during the Adva
  
  ## Placement
  ### Placement and Optimization
-   The next step after floorplanning is placement. Placement determines location of each of the components on the die. Placement does not just place the standard cells available in the synthesized netlist. It also optimizes the design, thereby removing any timing violations created due to the relative placement on die.
+   After floorplanning, the next step is placement. The placement of each component on the die is determined by placement. Placement does not simply place the standard cells from the synthesised netlist. It also optimises the design, removing any timing violations caused by die relative placement.
    
  ### Placement using OpenLANE
    Placement in OpenLANE is done using the following command. 
     
-    run_placement
+    place_io
+    global_placement_or
+    detailed_placement
+    tap_decap_or
+    detailed_placement
    
    The DEF file created during floorplan is used as an input to placement. Placement in OpenLANE occurs in two stages:
    - Global Placement
