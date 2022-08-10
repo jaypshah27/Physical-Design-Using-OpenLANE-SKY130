@@ -76,8 +76,8 @@ This repository contains all the information studied and created during the Adva
 - Die: A die is a small block of semiconducting material used to fabricate a specific functional circuit.
 - Core: The actual area of the IC where the logic is located.
 - Pads: These are the interfaces between a chip's internal signals and its external pins.
- 
-  <img src="images/d1_ic_terms.JPG">
+- 
+ ![image](https://user-images.githubusercontent.com/46182864/183931776-52ec8555-f9eb-4fa8-8a9d-2987081d1f04.png)
  
  ## Introduction To RISC-V
    RISC-V is a new ISA with open, free, and non-restrictive licencing. The RISC-V ISA introduces a new level of architectural freedom in terms of free, extensible software and hardware.
