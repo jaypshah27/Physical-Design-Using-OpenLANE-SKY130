@@ -134,7 +134,6 @@ This repository contains all the information studied and created during the Adva
    
     ./flow.tcl -interactive
     
-   <img src="images/d1_openlane_invoke.JPG"> 
    
  ### Design Preparation
    The first step after invoking OpenLANE is to import the openlane package of required version. This is done using following command. Here 0.9 is the required version of OpenLANE.
@@ -145,8 +144,7 @@ This repository contains all the information studied and created during the Adva
        
     prep -design picorv32a
    
-   
-   <img src="images/d1_openlane_design_prep.JPG"> 
+    
    
    During the design preparation process, the technology LEF and cell LEF files are merged to create a'merged.lef' file. The LEF file contains information such as layer information, design rules, and information about each standard cell needed for place and route.
     
