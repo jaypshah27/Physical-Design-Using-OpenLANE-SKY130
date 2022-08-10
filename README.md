@@ -43,7 +43,7 @@ This repository contains all the information studied and created during the Adva
   - [Acknowledgement](#acknowledgement)
  
 # Introduction To RTL to GDSII Flow
-  RTL to GDSII Flow refers to the all the steps involved in converting a logical Register Transfer Level(RTL) Design to a fabrication ready GDSII format. GDSII is a database file format which is an industry standard for data exchange of IC layout artwork.
+  RTL to GDSII Flow refers to all of the steps involved in converting a logical Register Transfer Level (RTL) Design to a fabrication ready GDSII format. GDSII is a database file format that is an industry standard for data exchange of IC layout artwork.
   The RTL to GSDII flow consists of following steps:
   - RTL Synthesis
   - Static Timing Analysis(STA)
@@ -72,25 +72,25 @@ This repository contains all the information studied and created during the Adva
   
 # Day 1 - Inception of open-source EDA, OpenLANE and Sky130 PDK
  ## Basic IC Design Terminologies
-  During the Physical Designing, one will come across multiple terminologies that are frequently used. Some of them are mentioned below:
-  - Package: It is a case that surrounds the circuit material to protect it from physical damage or corrosion and allow mounting of the electrical contacts connecting it to the printed circuit board (PCB). The below snippet shows an IC with 48 pins and Quad Flat No-Leads(QFN) package.
-  - Die: A die is a small block of semiconducting material on which a given functional circuit is fabricated.
-  - Core: It is the actual area of the IC where the logic resides.
-  - Pads: These are the interfaces between the internal signals of a chip and the external pins
+  Several commonly used terminologies will be encountered during the Physical Designing process. Some of them are as follows:
+- Package: A case that protects the circuit material from physical damage or corrosion and allows the electrical contacts connecting it to the printed circuit board to be mounted (PCB). The image below depicts an IC with 48 pins and a Quad Flat No-Leads (QFN) package.
+- Die: A die is a small block of semiconducting material used to fabricate a specific functional circuit.
+- Core: The actual area of the IC where the logic is located.
+- Pads: These are the interfaces between a chip's internal signals and its external pins.
  
   <img src="images/d1_ic_terms.JPG">
  
  ## Introduction To RISC-V
-   RISC-V is a new ISA that's available under open, free and non-restrictive licences. RISC-V ISA delivers a new level of free, extensible software and hardware freedom on architecture.
-   - It is far simpler and smaller than other commercial ISAs available.
-   - It avoids micro-architecture or technology dependent features.
-   - It has small standard base ISA and multiple standard extensions.
-   - It supports variable-length instruction encoding.
-   A brief design for RISC-V core can be refered [here](https://github.com/ShonTaware/RISC-V_Core_4_Stage)
+   RISC-V is a new ISA with open, free, and non-restrictive licencing. The RISC-V ISA introduces a new level of architectural freedom in terms of free, extensible software and hardware.
+- It is much simpler and smaller than other commercial ISAs on the market.
+- It avoids microarchitecture and features that are dependent on technology.
+- It has a small standard base ISA as well as numerous standard extensions.
+- It can encode variable-length instructions.
+
    
  ## SoC Design and OpenLANE
  ### Open-Source PDK Directory Structure
-   All the Process Design Kit(PDK) are listed under the `pdks/` directory. Along with the `Sky130A` we are using some other open-source PDKs and other related files are also available in the directory. The location of the PDK directory is given of `$PDK_ROOT` variable. 
+   The 'pdks/' directory contains all of the Process Design Kits (PDK). Along with the 'Sky130A,' we use a few other open-source PDKs, and other related files are included in the directory. The variable '$PDK ROOT' specifies the location of the PDK directory.
     
    <img src="images/d1_pdk_directory_structure.JPG">
   
