@@ -342,7 +342,7 @@ TritonRoute 14 checks for DRC violations after routing.
    
     run_routing
     
-  ![image](https://user-images.githubusercontent.com/46182864/183929381-a90e3853-6b9f-4d8b-a5be-3dcad94a998c.png)
+![image](https://user-images.githubusercontent.com/46182864/183929642-3a5df5b4-158c-4d84-ad83-d0e6f096ec34.png)
 
     
  ## SPEF File Generation
