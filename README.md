@@ -25,7 +25,6 @@ This repository contains all the information studied and created during the Adva
       - [Placement and Optimization](#placement-and-optimization)
       - [Placement using OpenLANE](#placement-using-openlane)
     - [Cell Design and Characterization Flows](#cell-design-and-characterization-flows)
-      - [Cell Design Flow](#cell-design-flow)
       - [Characterization Flow](#characterization-flow)
   - [Day 3 - Design library cell using Magic Layout and ngspice characterization](#day-3---design-library-cell-using-magic-layout-and-ngspice-characterization)
     - [CMOS Inverter Design using Magic](#cmos-inverter-design-using-magic)
@@ -92,12 +91,10 @@ This repository contains all the information studied and created during the Adva
  ### Open-Source PDK Directory Structure
    The 'pdks/' directory contains all of the Process Design Kits (PDK). Along with the 'Sky130A,' we use a few other open-source PDKs, and other related files are included in the directory. The variable '$PDK ROOT' specifies the location of the PDK directory.
     
-   <img src="images/d1_pdk_directory_structure.JPG">
   
  ### What is OpenLANE
    [OpenLANE](https://github.com/efabless/openlane) is an automated RTL to GDSII flow that includes open-source components such as OpenROAD, Yosys, Magic, Fault, Netgen, and SPEF-Extractor. It also makes custom design exploration and optimization scripts easier to add.
    
-   <img src="images/openlane_flow.png">
    
    OpenLANE flow consists of several stages. By default all flow steps are run in sequence. Each stage may consist of multiple sub-stages. OpenLANE can also be run interactively as shown here.
 
@@ -184,13 +181,14 @@ This repository contains all the information studied and created during the Adva
  
  ### Review Floorplan Layout in Magic
    The Magic Layout Tool is used to visualise the layout after the floorplan has been created. The following three files are required to view a floorplan in Magic:
-1. Sky130A.tech Technology File
-2. LEF file that has been merged ('merged.lef')
-3. DEF Document
-    
-   <img src="images/d2_floorplan_invoke_magic_cmd.JPG">
-   <img src="images/d2_floorplan_magic.JPG">
-   <img src="images/d2_floorplan_magic_expand.JPG">
+  1. Sky130A.tech Technology File
+  2. LEF file that has been merged ('merged.lef')
+  3. DEF Document     
+       
+    magic -T /home/f20180533/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read          picorv32a.floorplan.def & 
+   
+   
+   ![image](https://user-images.githubusercontent.com/46182864/183928340-14100b29-58c2-4b78-a225-3fbc40fa173d.png)
  
  ## Placement
  ### Placement and Optimization
@@ -211,15 +209,12 @@ This repository contains all the information studied and created during the Adva
    
    Placement is carried out as an iterative process till the value of overflow converges to 0.
    
-   <img src="images/d2_placement_invoke_magic_cmd.JPG">
-   <img src="images/d2_placement_magic.JPG">
-   <table border="0"><tr><td><img src="images/d2_placement_magic_expand.JPG"> </td><td> <img src="images/d2_placement_magic_expand_2.JPG"> </td></tr></table>
+    magic -T /home/f20180533/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def & 
+   ![image](https://user-images.githubusercontent.com/46182864/183927928-d51011f1-771e-4a1f-8c2f-764fc4a89b27.png)
+   ![image](https://user-images.githubusercontent.com/46182864/183928127-5bde55d7-71a4-4465-af4e-f5c9af6ec70b.png)
    
  ## Cell Design and Characterization Flows
  ### Cell Design Flow
-  In a border view Cell Design flow is are the stages or steps involved in the entire design of a standard cell. The figure below shows the input, output and design steps involved in cell design
-  
-  <img src="images/d2_cell_design_flow.PNG">
  
  ### Characterization Flow
   Standard Cells in polygon level format have a few issues (GDSII). Among them are:
@@ -238,25 +233,17 @@ This repository contains all the information studied and created during the Adva
 6. Verification - Various checks are performed to ensure that the characterization is correct.
  
 # Day 3 - Design library cell using Magic Layout and ngspice characterization
-  Every Design is represented by equivalent cell design. All the standard cell designs are available in the Cell Library. A fully custom cell design that meets all rules can be added to the library. To begin with, a CMOS Inverter is designed in Magic Layout Tool and analysis is carried out using NGSPICE tool.
+  Each Design is represented by an identical cell design. The Cell Library contains all of the standard cell designs. A completely unique cell design that complies with all rules can be added to the library. To begin, a CMOS inverter is designed in Magic Layout Tool and analysed with the NGSPICE tool.
   
  ## CMOS Inverter Design using Magic
-  The inverter design is done using Magic Layout Tool. It takes the technology file as an input (`sky130A.tech` in this case). Magic tool provide a very easy to use interface to design various layers of the layout. It also has an in-built DRC check fetaure.
-  The snippet below shows a layout for CMOS Inverter with and without design rule violations.
+  Magic Layout Tool is used to design the inverter. It accepts the technology file ('sky130A.tech' in this case) as input. The Magic tool provides a very simple interface for designing various layers of the layout. It also includes a DRC check fetaure.
+The snippet below depicts a CMOS inverter layout with and without design rule violations.
   
-  <table border="0">
-  <tr>
-    <td><img src="images/d3_magic_layout_with_error.JPG"> </td>
-    <td> <img src="images/d3_magic_with_error.JPG"> </td>
-  </tr>
-  <tr>
-    <td><img src="images/d3_magic_layout_without_error.JPG"> </td>
-    <td> <img src="images/d3_magic_without_error.JPG"> </td>
-  </tr>
-  </table>
+  ![image](https://user-images.githubusercontent.com/46182864/183922310-af585a99-9740-4341-ac8c-6661b2e4e95a.png)
+
   
  ## Extract SPICE Netlist from Standard Cell Layout
-  To simulate and verify the functionality of the standard cell layout designed, there is a need of SPICE netlist of a given layout. To mention in brief, "Simulation Program with Integrated Circuit Emphasis (SPICE)" is an industry standard design language for electronic circuitry. SPICE model very closely models the actual circuit behavior.
+  A SPICE netlist of a given layout is required to simulate and verify the functionality of the designed standard cell layout. To summarise, "Simulation Program with Integrated Circuit Emphasis (SPICE)" is a design language for electronic circuitry that is widely used in the industry. The SPICE model closely resembles the actual circuit behaviour.
   Extraction of SPICE model for a given layout is done in two stages.
   1. Extract the circuit from the layout design.
   
@@ -266,61 +253,51 @@ This repository contains all the information studied and created during the Adva
     
     ext2spice cthresh 0 rthresh 0
     ext2spice
-  
-  The extracted SPICE model like the first snippet shown below. Some modification are done to the SPICE netlist for the purpose of simulations, which is shown in the second snippet below.
-  
-  <table border="0">
-  <tr>
-    <td> <center>Commands for Extraction</center> <br /><img src="images/d3_spice_ext_1.JPG"> </td>
-    <td> <center>.ext file</center> <img src="images/d3_spice_ext_2.JPG"> </td>
-  </tr>
-  <tr>
-    <td> <center>Generated SPICE Netlist</center> <img src="images/d3_spice_1.JPG"> </td>
-    <td> <center>Modified SPICE Netlist</center> <img src="images/d3_spice_2.JPG"> </td>
-  </tr>
-  </table>
+   
+   ![image](https://user-images.githubusercontent.com/46182864/183926280-de2e79a6-7df9-4328-9021-d69a77e7588f.png)
+
   
  ## Transient Analysis using NGSPICE
-  The SPICE netlist generated in previous step is simulated using the NGSPICE tool. NGSPICE is an open-source mixed-level/mixed-signal electronic spice circuit simulator.
+  The NGSPICE tool is used to simulate the SPICE netlist generated in the previous step. NGSPICE is a free and open-source mixed-level/mixed-signal circuit simulator.
   The command used to invoke NGSPICE is shown below.
   
-    ngspice <name-of-SPICE-netlist-file>
+    ngspice sky130_inv.spice
     
   Following command is used to plot waveform in ngspice tool.
     
     ngspice 1 -> plot Y vs time A
     
-   <img src="images/d3_ngspice_2.JPG">
+![image](https://user-images.githubusercontent.com/46182864/183923259-2d3a11ab-f3a6-4cce-9b60-71eafb154cc9.png)
    
    Below figure shows the waveform of Inverter output vs input w.r.t. time. Many timing parameters like rise time delay, fall time delay, propagation delay are calculated using this waveform.
    
-   <img src="images/d3_ngspice_3.JPG">
+   ![image](https://user-images.githubusercontent.com/46182864/183923368-1df708b8-af2e-4ecc-86eb-a055354b3fbb.png)
+   ![image](https://user-images.githubusercontent.com/46182864/183926028-c98da6b6-c3ea-4c49-85a5-7a3ed34fc215.png)
+
   
 # Day 4 - Pre-layout timing analysis and importance of good clock tree
-  In order to use a design of standard cell layout in OpenLANE RTL2GDS flow, it is converted to a standard cell LEF. LEF stands for Library Exchange Format. The entire design has to be analyzed for any timing violations after addition or change in the design.
+  To use a standard cell layout design in an OpenLANE RTL2GDS flow, it is converted to a standard cell LEF. LEF is an abbreviation for Library Exchange Format. After any addition or change to the design, the entire design must be analysed for any timing violations.
   
  ## Magic Layout to Standard Cell LEF
-  Before creating the LEF file we require some details about the layers in the designs. This details are available in a `tracks.info` as shown below. It gives information about the `offset` and `pitch` of a track in a given layer both in horizontal and vertical direction. The track information is given in below mentioned format.
+  We need some information about the layers in the designs before we can create the LEF file. This information is available in a 'tracks.info' file, as shown below. It specifies the 'offset' and 'pitch' of a track in a given layer in both the horizontal and vertical directions. The track information is presented in the format shown below.
   
     <layer-name> <X-or-Y> <track-offset> <track-pitch>
     
-  <img src="images/d4_track_info.JPG">
+![image](https://user-images.githubusercontent.com/46182864/183921824-5e91c2ea-24f4-46b3-895d-9558ca214101.png)
   
-  To create a standard cell LEF from an existing layout, some important aspects need to be taken into consideration.
-  1. The height of cell be appropriate, so that the `VPWR` and `VGND` properly fall on the power distribution network.
-  2. The width of cell should be an odd multiple of the minimum permissible grid size.
-  3. The input and ouptut of the cell fall on intersection of the vertical and horizontal grid line.
-  
-  <img src="images/d4_valid_layout.JPG">  
-  
+  Some important factors must be considered when creating a standard cell LEF from an existing layout.
+1. The cell's height must be sufficient so that the 'VPWR' and 'VGND' properly fall on the power distribution network.
+2. The cell width should be an odd multiple of the minimum allowable grid size.
+3. The cell's input and output are located at the intersection of the vertical and horizontal grid lines.
+
  ## Timing Analysis using OpenSTA
-  The Static Timing Analysis(STA) of the design is carried out using the OpenSTA tool. The analysis can be done in to different ways.
-  - Inside OpenLANE flow: This is by invoking `openroad` command inside the OpenLANE flow. In the openroad OpenSTA is invoked.
-  - Outside OpenLANE flow: This is done by directly invoking OpenSTA in the command line. This requires extra configuration to be done to specific the verilog file, constraints, clcok period and other required parameters.
+  The OpenSTA tool is used to perform the design's Static Timing Analysis (STA). The analysis can be carried out in a variety of ways.
+- Within the OpenLANE flow: This is accomplished by invoking the 'openroad' command within the OpenLANE flow. OpenSTA is used in the openroad.
+- Outside of the OpenLANE flow: This is accomplished by directly invoking OpenSTA from the command line. This necessitates additional configuration to specify the verilog file, constraints, clcok period, and other required parameters.
    
   OpenSTA is invoked using the below mentioned command.
   
-    sta <conf-file-if-required>
+    sta pre_sta.conf
   
   The above command gives an Timing Analysis Report which contains:
    1. Hold Time Slack
@@ -328,71 +305,54 @@ This repository contains all the information studied and created during the Adva
    3. Total Negative Slack (= 0.00, if no negative slack)
    4. Worst Negative Slack (= 0.00, if no negative slack)
   
-  <table border="0">
-  <tr>
-    <td> <img src="images/d4_sta_1.JPG"> </td>
-    <td> <img src="images/d4_sta_2.JPG"> </td>
-  </tr>
-  </table>
   
-  If the design produces any setup timing violaions in the analysis, it can be eliminated or reduced using techniques as follows:
-  1. Increase the clock period (Not always possible as generally operating frequency is freezed in the specifications)
-  2. Scaling the buffers (Causes increase in design area)
-  3. Restricting the maximum fan-out of an element. 
+  
+  If the design causes any setup timing violations in the analysis, the following techniques can be used to eliminate or reduce them:
+1. Extend the clock period (Not always possible as generally operating frequency is freezed in the specifications)
+2. Buffer Scaling (Causes increase in design area)
+3. Limiting an element's maximum fan-out
   
  ## Clock Tree Synthesis using TritonCTS
-  Clock Tree Synthesis(CTS) is a process which makes sure that the clock gets distributed evenly to all sequential elements in a design. The goal of CTS is to minimize the clock latency and skew.
-  There are several CTS techniques like:
-  1. H - Tree
-  2. X - Tree
-  3. Fish bone
+  Clock Tree Synthesis (CTS) is a process that ensures that the clock is evenly distributed to all sequential elements in a design. CTS's goal is to reduce clock latency and skew.
   
-  In OpenLANE, clock tree synthesis is carried out using TritonCTS tool. CTS should always be done after the floorplanning and placement as the CTS is carried out on a `placement.def` file that is created during placement stage.
+  
+  The TritonCTS tool is used to generate clock trees in OpenLANE. CTS should always be performed after floorplanning and placement because CTS is performed on a 'placement.def' file created during the placement stage.
   
   The command used for running CTS in OpenLANE is given below.
   
     run_cts
     
-   <img src="images/d4_cts_1.JPG">
-   <img src="images/d4_cts_2.JPG">
+
 
 # Day 5 - Final steps for RTL2GDS
  ## Generation of Power Distribution Network
-   In a normal RTL to GDSII flow the generation of power distribution network is done before the placement step, but in the OpenLANE flow generation of PDN is carried out after the Clock Tree Synthesis(CTS). This step generates all the tracks, rails required for routing power to entire chip.
-   Generation of power distribution network is done using following command.
+   In a normal RTL to GDSII flow, the power distribution network is generated before the placement step, but in an OpenLANE flow, the PDN is generated after the Clock Tree Synthesis (CTS). This step creates all of the tracks and rails needed to route power to the entire chip.
+The following command is used to create a power distribution network.
    
     gen_pdn
     
-   <img src="images/d5_pdn.JPG">
-   
  ## Routing using TritonRoute
-   OpenLANE uses TritonRoute, an open source router for modern industrial designs. The router consists of several main building blocks, including pin access analysis, track assignment, initial detailed routing, search and repair, and a DRC engine.
-   The routing process is implemented in two stages:
-   1. Global Routing - Routing guides are generated for interconnects
-   2. Detailed Routing - Tracks are generated interatively.
-   TritonRoute 14 ensures there are no DRC violations after routing.
+   TritonRoute, an open source router for modern industrial designs, is used by OpenLANE. The router is made up of several major components, such as pin access analysis, track assignment, initial detailed routing, search and repair, and a DRC engine.
+The routing procedure is divided into two stages:
+1. Global Routing - Interconnect routing guides are generated.
+2. Detailed Routing - Tracks are generated in an interactive fashion.
+TritonRoute 14 checks for DRC violations after routing.
    
    The following command is used for routing.
    
     run_routing
     
-   <table border="0">
-   <tr>
-    <td> <img src="images/d5_routing.JPG"> </td>
-    <td> <img src="images/d5_routing_2.JPG"> </td>
-   </tr>
-   </table>
+   ![image](https://user-images.githubusercontent.com/46182864/183924772-475d2b18-124f-4f69-a24c-eed3c6d8b4bf.png)
+
     
  ## SPEF File Generation
-   Standard Parasitic Exchange Format (SPEF) is an IEEE standard for representing parasitic data of wires in a chip in ASCII format. Non-ideal wires have parasitic resistance and capacitance that are captured by SPEF. 
-   OpenLANE consists of a tool named, SPEF_EXTRACTOR for generation of SPEF file. It is a `python` based parser which takes the `LEF` and `DEF` files as input arguments and generates the SPEF file. The following command is used for invoking the SPEC_EXTRACTOR.
+   The IEEE standard Standard Parasitic Exchange Format (SPEF) is used to represent parasitic data of wires in a chip in ASCII format. SPEF captures parasitic resistance and capacitance in non-ideal wires.
+For the generation of SPEF files, OpenLANE includes a tool called SPEF EXTRACTOR. It's a Python-based parser that takes the 'LEF' and 'DEF' files as input and generates the SPEF file. The SPEC EXTRACTOR is invoked using the following command.
    
     cd <path-to-SPEF_EXTRACTOR-tool-directory>
     python3 main.py <path-to-LEF-file> <path-to-DEF-file-created-after-routing>
-    
-   The below snippet shows a small part of the `.spef` file.
-   
-   <img src="images/d5_spef_file.JPG">
+      
+  
    
 # References
   - RISC-V: https://riscv.org/
@@ -402,5 +362,5 @@ This repository contains all the information studied and created during the Adva
 # Acknowledgement
   - [Kunal Ghosh](https://github.com/kunalg123), Co-founder, VSD Corp. Pvt. Ltd.
   - [Nickson Jose](https://github.com/nickson-jose)
-  - [Praharsha Mahurkar](https://github.com/praharshapm)
+  - [Shon Taware](https://github.com/ShonTaware/OpenSource_Physical_Design))
   - Akurathi Radhika
