@@ -155,7 +155,7 @@ This repository contains all the information studied and created during the Adva
    
     run_synthesis
    
-   <img src="images/d1_openlane_synthesis.JPG">
+  ![image](https://user-images.githubusercontent.com/46182864/183928695-6e194d94-f9de-4ddb-9a3a-b9305be95f4b.png)
    
 # Day 2 - Good floorplan vs bad floorplan and introduction to library cells
  ## Chip Floorplanning
@@ -177,7 +177,7 @@ This repository contains all the information studied and created during the Adva
    
    Successful floorplanning gives a `def` file as output. This file contains the die area and placement of standard cells.
    
-   <img src="images/d2_floorplan_def.JPG">
+  
  
  ### Review Floorplan Layout in Magic
    The Magic Layout Tool is used to visualise the layout after the floorplan has been created. The following three files are required to view a floorplan in Magic:
@@ -210,7 +210,7 @@ This repository contains all the information studied and created during the Adva
    Placement is carried out as an iterative process till the value of overflow converges to 0.
    
     magic -T /home/f20180533/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def & 
-   ![image](https://user-images.githubusercontent.com/46182864/183927928-d51011f1-771e-4a1f-8c2f-764fc4a89b27.png)
+
    ![image](https://user-images.githubusercontent.com/46182864/183928127-5bde55d7-71a4-4465-af4e-f5c9af6ec70b.png)
    
  ## Cell Design and Characterization Flows
