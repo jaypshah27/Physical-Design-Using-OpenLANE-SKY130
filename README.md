@@ -252,7 +252,9 @@ The snippet below depicts a CMOS inverter layout with and without design rule vi
     ext2spice cthresh 0 rthresh 0
     ext2spice
    
-   ![image](https://user-images.githubusercontent.com/46182864/183926280-de2e79a6-7df9-4328-9021-d69a77e7588f.png)
+ ![image](https://user-images.githubusercontent.com/46182864/183938605-15eb6d59-5e38-4dd8-9c45-d7305224d968.png)
+
+ ![image](https://user-images.githubusercontent.com/46182864/183926280-de2e79a6-7df9-4328-9021-d69a77e7588f.png)
 
   
  ## Transient Analysis using NGSPICE
@@ -350,7 +352,10 @@ For the generation of SPEF files, OpenLANE includes a tool called SPEF EXTRACTOR
     cd <path-to-SPEF_EXTRACTOR-tool-directory>
     python3 main.py <path-to-LEF-file> <path-to-DEF-file-created-after-routing>
       
+  Results can be seen in this directory
   
+  ![image](https://user-images.githubusercontent.com/46182864/183938995-3f3f9f9f-73cf-4bd7-8e15-ac0d762d6b11.png)
+
    
 # References
   - RISC-V: https://riscv.org/
