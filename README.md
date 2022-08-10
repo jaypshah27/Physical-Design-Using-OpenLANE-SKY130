@@ -222,19 +222,20 @@ This repository contains all the information studied and created during the Adva
   <img src="images/d2_cell_design_flow.PNG">
  
  ### Characterization Flow
-  There are few problems of Standard Cells in polygon level format (GDSII). Some of them are:
-  - Extraction of functionality is complicated and unnecessary as it is known
-  - Functional/Delay simulation takes way too long
-  - Power extraction for a whole chip takes too long
-  - Automatic detection of timing constraints (e.g. Setup time) is difficult
+  Standard Cells in polygon level format have a few issues (GDSII). Among them are:
+- As is well known, functionality extraction is complicated and unnecessary. - As is well known, functionality extraction is complicated and unnecessary. 
+- As is well known, functionality extraction is complicated and unnecessary. 
+- Functional/Delay simulation takes far too long. 
+- Power extraction for an entire chip takes far too long. 
+- Automatic detection of timing constraints (e.g. Setup time) is difficult.
 
-  A solution to above problems is Cell Characterization. It is a simple model for delay, function, constraints and power on cell/gate level. The Characterization Flow consists of the following stages:
-  1. Netlist Extraction - Transistors, resistances and capacitances are extracted with special tools and saved as SPICE netlist (or similar)
-  2. Specification of parameters - Library-wide parameters have to be specified: e.g. max Transition time
-  3. Model selection and specification - The used models determine the required data
-  4. Measurement - The cells are simulated with a SPICE-like tool to obtain the required data
-  5. Model Generation - The obtained data is fed into the models
-  6. Verification - Different checks are performed to ensure the correctness of the characterization
+  Cell Characterization is a solution to the problems listed above. It is a straightforward model for delay, function, constraints, and power at the cell/gate level. The following stages comprise the Characterization Flow:
+1. Netlist Extraction - Using special tools, transistors, resistances, and capacitances are extracted and saved as SPICE netlists (or similar)
+2. Parameter specification - Library-wide parameters must be specified: For example, maximum Transition Time
+3. Model selection and specification - The models used determine the necessary data.
+4. Measurement - To obtain the required data, the cells are simulated using a SPICE-like tool.
+5. Model Generation – The data collected is fed into the models.
+6. Verification - Various checks are performed to ensure that the characterization is correct.
  
 # Day 3 - Design library cell using Magic Layout and ngspice characterization
   Every Design is represented by equivalent cell design. All the standard cell designs are available in the Cell Library. A fully custom cell design that meets all rules can be added to the library. To begin with, a CMOS Inverter is designed in Magic Layout Tool and analysis is carried out using NGSPICE tool.
